@@ -29,5 +29,11 @@
     <ClInclude Include="CircularList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JosephusProblem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleLinkedList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
