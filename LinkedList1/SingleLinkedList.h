@@ -32,12 +32,10 @@ public:
 	void detectLoop();
 	void swapNodes(int nodeOne, int nodeTwo);
 	void evenOddSpliter();
-
 	int totalNodesFinder();
-
-	int reverseHalfs();
-
+	void reverseToMid();
 	void evenOddPositionSwapper();
+	void pairWiseSwaper();
 
 
 
@@ -486,66 +484,123 @@ int SingleLinkedList::findNode(int data) {
 	 return count;
  };
 
- int SingleLinkedList::reverseHalfs() {
- 
-	 if (firstNode == nullptr)
-	 {
+ //needs fixing
+ void SingleLinkedList::reverseToMid() {
+	 if (firstNode == nullptr || firstNode->nextNode == nullptr) {
+		 return; // No need to reverse if there are 0 or 1 nodes
+	 }
+
+	 // Find the midpoint using slow and fast pointers
+	 node* slow = firstNode;
+	 node* fast = firstNode;
+	 node* prev = nullptr;
+
+	 while (fast != nullptr && fast->nextNode != nullptr) {
+		 prev = slow;
+		 slow = slow->nextNode;
+		 fast = fast->nextNode->nextNode;
+	 }
+
+	 // Reverse the first half of the list
+	 node* currentNode = firstNode;
+	 node* forwardNode = nullptr;
+	 node* prevNode = nullptr;
+	 node* midNode = slow; // Midpoint of the list
+
+	 while (currentNode != midNode) {
+		 forwardNode = currentNode->nextNode;
+		 currentNode->nextNode = prevNode;
+		 prevNode = currentNode;
+		 currentNode = forwardNode;
+	 }
+
+	 // Update the head to the last node of the reversed first half
+	 firstNode = prevNode;
+
+	 // Reverse the second half of the list
+	 prevNode = nullptr;
+	 while (slow != nullptr) {
+		 forwardNode = slow->nextNode;
+		 slow->nextNode = prevNode;
+		 prevNode = slow;
+		 slow = forwardNode;
+	 }
+
+	 // Connect the last node of the first half to the first node of the second half
+	 if (prev != nullptr) {
+		 prev->nextNode = prevNode;
+	 }
+	 else {
+		 firstNode->nextNode = prevNode;
+	 }
+ }
+
+ void SingleLinkedList::evenOddPositionSwapper() {
+	 if (firstNode == nullptr || firstNode->nextNode == nullptr) {
+		 cout << "List does not have enough nodes for swapping." << endl;
 		 return;
 	 }
 
-	 int halfNodes = 0;
-	 int totalNodes = totalNodesFinder();
-	 bool evenNodesNo;
-	 if (totalNodes % 2 == 0)
-	 {
-		 evenNodesNo = true;
-		 halfNodes = totalNodes / 2;
+	 bool swapped = true;
 
+	 while (swapped) {
+		 swapped = false;
+		 node* currentNode = firstNode;
+		 node* prevNode = nullptr;
+		 node* firstEvenNode = nullptr;
+		 node* lastOddNode = nullptr;
+
+		 // Find the first even node
+		 while (currentNode != nullptr) {
+			 if (currentNode->data % 2 == 0) {
+				 firstEvenNode = currentNode;
+				 break;
+			 }
+			 prevNode = currentNode;
+			 currentNode = currentNode->nextNode;
+		 }
+
+		 // Find the last odd node
+		 while (currentNode != nullptr) {
+			 if (currentNode->data % 2 != 0) {
+				 lastOddNode = currentNode;
+			 }
+			 prevNode = currentNode;
+			 currentNode = currentNode->nextNode;
+		 }
+
+		 // Swap the data values of first even and last odd nodes
+		 if (firstEvenNode != nullptr && lastOddNode != nullptr) {
+			 int temp = firstEvenNode->data;
+			 firstEvenNode->data = lastOddNode->data;
+			 lastOddNode->data = temp;
+			 swapped = true;  // Mark as swapped
+		 }
 	 }
-	 else
-	 {
-		  halfNodes = (totalNodes / 2) + 1;
-	 }
-	 
+ };
+
+ void SingleLinkedList::pairWiseSwaper() {
+	
+	 if (firstNode == nullptr || firstNode->nextNode == nullptr) {
+        return; // No need to swap if there are 0 or 1 nodes
+     }
+
 	 node* currentNode = firstNode;
-	 for (size_t i = 0; i < halfNodes; i++)
+	 node* prevNode = nullptr;
+	 firstNode = firstNode->nextNode;
+
+	 while (currentNode != nullptr && currentNode->nextNode != nullptr)
 	 {
+		 node* forwardNode = currentNode->nextNode;
+		 currentNode->nextNode = forwardNode->nextNode;
+		 forwardNode->nextNode = currentNode;
 		 
+		 if (prevNode != nullptr)
+		 {
+			 prevNode->nextNode = forwardNode;
+		 }
+		 prevNode = currentNode;
+		 currentNode = currentNode->nextNode;
 	 }
 
  };
-
- //Swap first even and last odd positions and so one
- void SingleLinkedList::evenOddPositionSwapper(){
- 
-	 node* currentNode = firstNode;
-	 node* previousNode = nullptr;
-	 node* NodeBeforeEvenNode = nullptr; 
-	 node* NodeBeforeOddNode = nullptr;
-
-
-	 while (currentNode != nullptr)
-	 {
-		 if(currentNode->data % 2 == 0)
-		 {
-			 NodeBeforeEvenNode = previousNode;
-			 currentNode = firstNode;
-			 while (currentNode != nullptr)
-			 {
-				 if (currentNode->data % 2 == 1)
-				 {
-					 NodeBeforeOddNode = previousNode;
-				 }
-				 currentNode = currentNode->nextNode;
-			 }
-		 }
-		 //Now need to swap the godamn nodes
-		 node* temp = NodeBeforeOddNode;
-
-
-
-		 previousNode = currentNode;
-		 currentNode = currentNode->nextNode;
-	 }
-	 
- }

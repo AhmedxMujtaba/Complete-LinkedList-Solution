@@ -1,20 +1,17 @@
 #include <iostream>
 #include "SingleLinkedList.h"
-//#include "CircularLinkedList.h"
+#include "CircularList.h"
 
 using namespace std;
 
 int main() {
-	SingleLinkedList list;
-	list.insertEnd(1);
-	list.insertEnd(2);
-	list.insertEnd(3);
-	list.insertEnd(4);
-	list.insertEnd(5);
-	list.insertEnd(6);
-	list.displayList();
-	list.swapNodes(2, 6);
-
-	list.displayList();
+	CircularList list;
+	
+	list.appendNodeAtEnd(1);
+	list.appendNodeAtEnd(2);
+	list.appendNodeAtEnd(31);
+	list.appendNodeAtEnd(4);
+	list.appendNodeAtEnd(5);
+	list.display();
 	return 0;
 }

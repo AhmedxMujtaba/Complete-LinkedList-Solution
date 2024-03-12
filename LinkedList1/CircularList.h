@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-class CircularLinkedList {
+class CircularList {
 	//Same as Single Linked List but we have the last element connected to the first
 private:
 	struct node
@@ -13,20 +13,22 @@ private:
 
 public:
 	// Constructor
-	CircularLinkedList() 
+	CircularList()
 	{
 		firstNode = nullptr;
 	}
 
 	void appendNodeAtEnd(int data);
+	void display();
 
+	void deleteNode(int data);
 
 };
 
-void CircularLinkedList::appendNodeAtEnd(int data) 
+void CircularList::appendNodeAtEnd(int data)
 {
 
-	node* newNode,*currentNode;
+	node* newNode, * currentNode;
 	newNode = new node;
 
 	newNode->data = data;
@@ -49,3 +51,37 @@ void CircularLinkedList::appendNodeAtEnd(int data)
 	currentNode->nextNode = newNode;
 	newNode->nextNode = firstNode;
 };
+
+void CircularList::display()
+{
+
+	node* currentNode;
+	currentNode = firstNode;
+	if (firstNode == nullptr)
+	{
+		cout << "List Empty" << endl;
+		return;
+	}
+
+	cout << "[ ";
+
+	do {
+		cout << currentNode->data << " ";
+		currentNode = currentNode->nextNode;
+	} while (currentNode != firstNode);
+
+	cout << "]" << endl;
+};
+
+void CircularList::deleteNode(int data) {
+
+	node* currentNode = firstNode;
+	node* previousNode = nullptr;
+	while (currentNode != nullptr)
+	{
+
+		previousNode = currentNode;
+		currentNode = currentNode->nextNode;
+
+	}
+}
