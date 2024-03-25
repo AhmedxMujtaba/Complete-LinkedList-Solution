@@ -1,13 +1,11 @@
 #include <iostream>
-#include "SingleLinkedList.h"
-#include "CircularList.h"
-#include "JosephusProblem.h"
+#include "LinkedListStack.h"
+
 
 
 using namespace std;
 
-int main() {
-	JosephusProblem game;
-	game.startGame();
-	return 0;
-}
+int main(){
+    LinkedListStack stack;
+    stack.menu();
+};

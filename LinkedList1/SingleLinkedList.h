@@ -604,3 +604,10 @@ int SingleLinkedList::findNode(int data) {
 	 }
 
  };
+
+ int main() {
+ 
+	 SingleLinkedList list;
+	 list.insertEnd(2);
+	 return 0;
+ }

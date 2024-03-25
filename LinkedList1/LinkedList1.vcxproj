@@ -142,11 +142,17 @@
     <ClCompile Include="LinkedList1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayStack.h" />
     <ClInclude Include="CircularLinkedList.h" />
     <ClInclude Include="CircularList.h" />
     <ClInclude Include="DoubleLinkedList.h" />
+    <ClInclude Include="DoubleLinkedList2.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="InventoryManager.h" />
     <ClInclude Include="JosephusProblem.h" />
+    <ClInclude Include="LinkedListStack.h" />
     <ClInclude Include="SingleLinkedList.h" />
+    <ClInclude Include="StackActivities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
