@@ -53,5 +53,8 @@
     <ClInclude Include="StackActivities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DoubleStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

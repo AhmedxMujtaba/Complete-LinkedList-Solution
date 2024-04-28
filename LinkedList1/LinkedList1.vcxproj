@@ -147,6 +147,7 @@
     <ClInclude Include="CircularList.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="DoubleLinkedList2.h" />
+    <ClInclude Include="DoubleStack.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="InventoryManager.h" />
     <ClInclude Include="JosephusProblem.h" />
