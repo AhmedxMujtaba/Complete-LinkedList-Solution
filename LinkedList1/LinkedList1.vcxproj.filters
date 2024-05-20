@@ -56,5 +56,8 @@
     <ClInclude Include="DoubleStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Binary Search Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

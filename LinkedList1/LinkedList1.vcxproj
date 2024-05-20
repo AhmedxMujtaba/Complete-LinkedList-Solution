@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArrayStack.h" />
+    <ClInclude Include="Binary Search Tree.h" />
     <ClInclude Include="CircularLinkedList.h" />
     <ClInclude Include="CircularList.h" />
     <ClInclude Include="DoubleLinkedList.h" />
